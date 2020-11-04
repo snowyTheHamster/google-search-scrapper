@@ -3,3 +3,7 @@
 *.xls
 *.xlsx
 *.csv
+*.txt
+
+!example.txt
+!example2.txt
