@@ -6,6 +6,13 @@ import csv
 
 today = datetime.datetime.now()
 today = (today.strftime("%Y-%b-%d"))
+output_folder = 'results'
+
+try:
+    os.mkdir(output_folder)
+except:
+    print('cant create folder')
+    pass
 
 for root, _, files in os.walk("./search_lists", topdown=False):
     for search_file in files:
@@ -26,7 +33,7 @@ for root, _, files in os.walk("./search_lists", topdown=False):
 
                 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
 
-                with open(f'sem_{query_title}.csv', 'a', newline='') as csvfile:
+                with open(f'{output_folder}/sem_{query_title}.csv', 'a', newline='') as csvfile:
                     linewriter = csv.writer(csvfile, delimiter='^', quotechar='"', quoting=csv.QUOTE_MINIMAL) # using ^ (caret) as delimiter
                     linewriter.writerow(['Date', 'Rank', 'Title', 'Url', 'Description']) # write csv header line
 
